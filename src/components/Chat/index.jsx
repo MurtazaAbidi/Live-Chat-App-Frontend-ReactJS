@@ -58,7 +58,11 @@ const Chat = ({ socket, username, room }) => {
                     })}
                 </div>
                 <div className='chat-footer'>
-                    <input type="text" placeholder='Enter your message ...' value={currentMessage} onChange={(e) => { setCurrentMessage(e.target.value) }} />
+                    <input type="text" placeholder='Enter your message ...' onKeyPress={(e)=>{
+                        if (e.key==='Enter'){
+                            sendMessage();
+                        }
+                    }} value={currentMessage} onChange={(e) => { setCurrentMessage(e.target.value) }} />
                     <button onClick={() => { sendMessage() }}>Send &#9658;</button>
                 </div>
             </div>
